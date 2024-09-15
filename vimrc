@@ -1,4 +1,47 @@
+"=============================================
+"  _      _  _   __                     
+" | |    (_)(_) / _|                    
+" | |__   _  _ | |_  ___   _ __    __ _ 
+" | '_ \ | || ||  _|/ _ \ | '_ \  / _` |
+" | | | || || || | | (_) || | | || (_| |
+" |_| |_||_||_||_|  \___/ |_| |_| \__, |
+"                                  __/ |
+"                                 |___/ 
+"
+" CopyRight hiifong <i@hiif.ong>
+"
+"=============================================
+
+set nocompatible
+filetype plugin indent on	" 开启文件类型检测
+syntax on		" 开启语法高亮
 set shiftwidth=4	" 缩进的宽度
+
+set backspace=indent,eol,start		" 智能回删
+
+set number		" 显示行号
+set relativenumber	" 显示相对行号
+
+set cursorcolumn	" 高亮当前列
+set cursorline		" 高亮当前行
+
+set smartindent		" 智能缩进
+
+set encoding=UTF-8	" 设置编码
+set guifont=Cascadia_Code:h16	" 设置字体
+set t_Co=256			" 开启256色
+
+" set laststatus=3	" 显示状态栏
+" set showcmd		" 显示输入的命令
+" set wildmenu		" Vim命令提示
+
+set autoread		" 自动加载外部修改
+set autowrite		" 自动保存
+set confirm		" 未保存确认
+
+set history=1024
+set undofile
+set undodir=~/.vim/.history
 
 "===> Plugins
 call plug#begin()
@@ -10,12 +53,11 @@ call plug#begin()
   Plug 'tpope/vim-pathogen'		" 运行时路径管理
   Plug 'vim-syntastic/syntastic'	" 语法检查
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }	" go开发插件
+  Plug 'mhinz/vim-startify'		" 启动页
 call plug#end()
 " Plugins <===
 
 " ===> 配置
-set encoding=UTF-8	" 设置编码
-set guifont=Cascadia_Code:h16	" 设置字体
 
 
 " ===> vim airline
@@ -41,8 +83,6 @@ call one#highlight('vimLineComment', '7b7e84', '', 'italic') " 设置评论样�
 
 " ===> vim-pathogen
 execute pathogen#infect()
-syntax on
-filetype plugin indent on
 " vim-pathogen <===
 
 " ===> syntastic
@@ -56,4 +96,10 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 " syntastic <===
 
+" ===> vim-startify
+let g:startify_custom_header=
+	    \ startify#pad(readfile('/Users/hiifong/.vim/vim-ascii.txt'))
+
+
 " 配置 <===
+
