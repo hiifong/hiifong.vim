@@ -8,7 +8,7 @@
 "                                  __/ |
 "                                 |___/ 
 "
-" CopyRight hiifong <i@hiif.ong>
+" Copyright hiifong <i@hiif.ong>
 "
 "=============================================
 
@@ -22,8 +22,8 @@ set backspace=indent,eol,start		" 智能回删
 set number		" 显示行号
 set relativenumber	" 显示相对行号
 
-set cursorcolumn	" 高亮当前列
-set cursorline		" 高亮当前行
+" set cursorcolumn	" 高亮当前列
+" set cursorline		" 高亮当前行
 
 set smartindent		" 智能缩进
 
@@ -43,6 +43,12 @@ set history=1024
 set undofile
 set undodir=~/.vim/.history
 
+set mouse=a		" 启用鼠标
+set clipboard=unnamed	" 使用剪切板
+
+let g:mapleader = ' '	" 使用空格键作为leader键
+nnoremap <leader>h :echo 'Hello World'<enter>
+
 "===> Plugins
 call plug#begin()
   Plug 'preservim/nerdtree'		" 文件管理
@@ -54,6 +60,9 @@ call plug#begin()
   Plug 'vim-syntastic/syntastic'	" 语法检查
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }	" go开发插件
   Plug 'mhinz/vim-startify'		" 启动页
+  Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}	" Markdown 文件预览
+  Plug 'wellle/context.vim'		" 上下文
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }	" 搜索
 call plug#end()
 " Plugins <===
 
@@ -99,6 +108,14 @@ let g:syntastic_check_on_wq = 0
 " ===> vim-startify
 let g:startify_custom_header=
 	    \ startify#pad(readfile('/Users/hiifong/.vim/vim-ascii.txt'))
+
+" vim-startify <===
+
+" ===> context.vim
+let g:context_enabled = 1		" 开启上下文
+let g:context_buftype_blacklist = []	" 对xxx文件禁用上下文
+
+" context.vim <===
 
 
 " 配置 <===

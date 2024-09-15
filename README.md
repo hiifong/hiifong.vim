@@ -17,3 +17,8 @@ ln -s $PWD/vimrc ~/.vimrc
 :-8     // 向上跳8行
 ```
 
+- Markdown 预览  
+```shell
+:MarkdownPreview        // 预览
+:MarkdownPreviewStop    // 停止预览
+```
