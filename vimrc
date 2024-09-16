@@ -12,7 +12,7 @@
 "
 "=============================================
 
-set nocompatible
+set nocompatible	" 关闭兼容模式
 filetype plugin indent on	" 开启文件类型检测
 syntax on		" 开启语法高亮
 set shiftwidth=4	" 缩进的宽度
@@ -31,30 +31,37 @@ set encoding=UTF-8	" 设置编码
 set guifont=Cascadia_Code:h16	" 设置字体
 set t_Co=256			" 开启256色
 
-" set laststatus=3	" 显示状态栏
-" set showcmd		" 显示输入的命令
-" set wildmenu		" Vim命令提示
+set scrolloff=5		" 屏幕顶部/底部保持 5 行文本
+set laststatus=2	" 显示状态栏
+set showcmd		" 显示输入的命令
+set wildmenu		" Vim命令提示
 
 set autoread		" 自动加载外部修改
 set autowrite		" 自动保存
 set confirm		" 未保存确认
 
+set incsearch		" 开启实时搜索
+set ignorecase		" 关闭大小写区分
+
 set history=1024
 set undofile
-set undodir=~/.vim/.history
+set undodir=$HOME/.vim/.history
 
 set mouse=a		" 启用鼠标
 set clipboard=unnamed	" 使用剪切板
 
+set background=dark	" 背景
+
 let g:mapleader = ' '	" 使用空格键作为leader键
 nnoremap <leader>h :echo 'Hello World'<enter>
+
 
 "===> Plugins
 call plug#begin()
   Plug 'preservim/nerdtree'		" 文件管理
-  Plug 'ryanoasis/vim-devicons'		" 文件类型icon
   Plug 'vim-airline/vim-airline'	" 底部状态行
   " Plug 'vim-airline/vim-airline-themes'	" vim-airline主题
+  Plug 'ryanoasis/vim-devicons'		" 文件类型icon
   Plug 'rakr/vim-one'			" vim-airline one主题
   Plug 'tpope/vim-pathogen'		" 运行时路径管理
   Plug 'vim-syntastic/syntastic'	" 语法检查
@@ -63,6 +70,8 @@ call plug#begin()
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}	" Markdown 文件预览
   Plug 'wellle/context.vim'		" 上下文
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }	" 搜索
+  Plug 'junegunn/vim-easy-align'	" 内容对齐
+  Plug 'Yggdroot/indentLine'		" 缩进对齐线
 call plug#end()
 " Plugins <===
 
@@ -72,11 +81,11 @@ call plug#end()
 " ===> vim airline
 
 let g:airline#extensions#tabline#enabled = 1 			" 标签栏
-let g:airline#extensions#tabline#formatter = 'unique_tail' 	" 路径格式化
 let g:airline_powerline_fonts = 1				" 设置vim-airline字体
+let g:airline#extensions#whitespace#enabled = 0			" 关闭不可见字符的提示
 let g:airline_theme='one'					" 设置vim-airline主题
+
 colorscheme one		" 配色方案
-set background=dark	" 背景
 
 " vim airline <===
 
@@ -103,6 +112,7 @@ let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
 " syntastic <===
 
 " ===> vim-startify
@@ -117,6 +127,19 @@ let g:context_buftype_blacklist = []	" 对xxx文件禁用上下文
 
 " context.vim <===
 
+" ===> vim-easy-align
+
+" Start interactive EasyAlign in visual mode (e.g. vipga)
+xmap ga <Plug>(EasyAlign)
+
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
+
+" vim-easy-align <===
+
+" ===> indentLine
+
+" indentLine <===
 
 " 配置 <===
 
