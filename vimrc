@@ -55,6 +55,11 @@ set background=dark	" 背景
 let g:mapleader = ' '	" 使用空格键作为leader键
 nnoremap <leader>h :echo 'Hello World'<enter>
 
+autocmd BufReadPost *	" 把光标定位到上一次关闭时的位置
+      \ if line("'\"") >= 1 && line("'\"") <= line("$")
+      \ |   exe "normal! g`\""
+      \ | endif
+
 
 "===> Plugins
 call plug#begin()
@@ -114,6 +119,24 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " syntastic <===
+
+" ===> vim-go
+let g:go_info_mode='gopls'
+let g:go_def_mode='gopls'
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_fmt_command = "goimports"
+let g:go_list_type = "quickfix"
+
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+" vim-go <===
+
 
 " ===> vim-startify
 let g:startify_custom_header=
