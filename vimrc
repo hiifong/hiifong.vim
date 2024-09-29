@@ -45,7 +45,7 @@ set ignorecase		" 关闭大小写区分
 
 set history=1024
 set undofile
-set undodir=$HOME/.vim/.history
+set undodir=$HOME/.vim/.undofile
 
 set mouse=a		" 启用鼠标
 set clipboard=unnamed	" 使用剪切板
@@ -70,8 +70,10 @@ call plug#begin()
   Plug 'embark-theme/vim', { 'as': 'embark', 'branch': 'main' }
   " Plug 'rakr/vim-one'			" vim-airline one主题
   Plug 'tpope/vim-pathogen'		" 运行时路径管理
+  Plug 'roman/golden-ratio'		" 自动控制窗口大小
   " Plug 'vim-syntastic/syntastic'	" 语法检查
   Plug 'fatih/vim-go', { 'do': ':GoInstallBinaries' }	" go开发插件
+  Plug 'preservim/nerdcommenter'	" 注释插件
   Plug 'mhinz/vim-startify'		" 启动页
   Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() }, 'for': ['markdown', 'vim-plug']}	" Markdown 文件预览
   Plug 'wellle/context.vim'		" 上下文
@@ -145,6 +147,36 @@ autocmd FileType go nmap <leader>b  <Plug>(go-build)
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 autocmd FileType go nmap <leader>t  <Plug>(go-test)
 " vim-go <===
+
+" ===> nerdcommenter
+" Create default mappings
+let g:NERDCreateDefaultMappings = 1
+
+" Add spaces after comment delimiters by default
+let g:NERDSpaceDelims = 1
+
+" Use compact syntax for prettified multi-line comments
+let g:NERDCompactSexyComs = 1
+
+" Align line-wise comment delimiters flush left instead of following code indentation
+let g:NERDDefaultAlign = 'left'
+
+" Set a language to use its alternate delimiters by default
+let g:NERDAltDelims_java = 1
+
+" Add your own custom formats or override the defaults
+let g:NERDCustomDelimiters = { 'c': { 'left': '/**','right': '*/' } }
+
+" Allow commenting and inverting empty lines (useful when commenting a region)
+let g:NERDCommentEmptyLines = 1
+
+" Enable trimming of trailing whitespace when uncommenting
+let g:NERDTrimTrailingWhitespace = 1
+
+" Enable NERDCommenterToggle to check all selected lines is commented or not 
+let g:NERDToggleCheckAllLines = 1
+
+" nerdcommenter <===
 
 
 " ===> vim-startify
