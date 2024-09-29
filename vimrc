@@ -35,6 +35,8 @@ set scrolloff=5		" 屏幕顶部/底部保持 5 行文本
 set laststatus=2	" 显示状态栏
 set showcmd		" 显示输入的命令
 set wildmenu		" Vim命令提示
+set nobackup		" 不生成临时文件
+set noswapfile		" 不生成 swap 文件
 
 set autoread		" 自动加载外部修改
 set autowrite		" 自动保存
@@ -45,7 +47,7 @@ set ignorecase		" 关闭大小写区分
 
 set history=1024
 set undofile
-set undodir=$HOME/.vim/.undofile
+set undodir=$HOME/.vim/.undodir
 
 set mouse=a		" 启用鼠标
 set clipboard=unnamed	" 使用剪切板
@@ -84,6 +86,21 @@ call plug#end()
 " Plugins <===
 
 " ===> 配置
+
+" ===> nerdtree
+" NERDTree
+let NERDTreeChDirMode=2
+let NERDTreeShowHidden=1
+let NERDTreeQuitOnOpen=1
+let NERDTreeShowLineNumbers=1
+let g:NERDTreeWinSize=35
+let g:NERDTreeFileExtensionHighlightFullName = 1
+let g:NERDTreeExactMatchHighlightFullName = 1
+let g:NERDTreePatternMatchHighlightFullName = 1
+let g:NERDTreeHighlightFolders = 1         " enables folder icon highlighting using exact match
+let g:NERDTreeHighlightFoldersFullName = 1 " highlights the folder name
+
+" nerdtree <===
 
 
 " ===> vim airline
@@ -206,4 +223,38 @@ nmap ga <Plug>(EasyAlign)
 " indentLine <===
 
 " 配置 <===
+
+
+" -------------------------------------------------
+" KEY MAPPING
+" -------------------------------------------------
+" Shortcut for Moving in INSERT mode
+imap <C-A> <Home>
+imap <C-E> <End>
+imap <C-B> <Left>
+imap <C-F> <Right>
+
+" Navigation Between Windows
+nnoremap <C-J> <C-W>j
+nnoremap <C-K> <C-W>k
+nnoremap <C-H> <C-W>h
+nnoremap <C-L> <C-W>l
+
+" Buffer Jump
+nnoremap <C-N> :bn<CR>
+nnoremap <C-P> :bp<CR>
+
+" Prev Tab
+nnoremap <S-H> gT
+" Next Tab
+nnoremap <S-L> gt
+
+" New Tab
+nnoremap <Leader>t :tabnew<CR>
+" Close Tab
+nnoremap <Leader>w :tabclose<CR>
+
+" NERDTree
+nnoremap <C-E>     :NERDTreeToggle<CR>
+nnoremap <Leader>e :NERDTreeToggle<CR>
 
